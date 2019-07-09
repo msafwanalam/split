@@ -40,7 +40,7 @@ class _GameUserInterface extends State<GameUserInterface> {
                     Expanded(
                       flex: 1,
                       child: QuestionButton(
-                        firstText: '23',
+                        firstText: 'Judgement',
                         fontSize: 50.0,
                         color: _color,
                         highlightColor: Color(0xffc10909),

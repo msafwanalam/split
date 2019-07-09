@@ -6,6 +6,7 @@ class QuestionButton extends StatelessWidget {
   final Color color;
   final GestureTapCallback onPressed;
   final Color highlightColor;
+  final bool ifBlue;
   const QuestionButton({
     Key key,
     this.onPressed,
@@ -13,6 +14,7 @@ class QuestionButton extends StatelessWidget {
     this.fontSize,
     this.color,
     this.highlightColor,
+    this.ifBlue,
   })  : assert(firstText != null),
         assert(fontSize != null),
         assert(color != null),
@@ -40,13 +42,15 @@ class QuestionButton extends StatelessWidget {
           highlightColor: highlightColor,
           elevation: 20,
           highlightElevation: 2,
-          child: Text(
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: Text(
             firstText,
             style: TextStyle(
                 fontSize: fontSize,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Nunito-Regular'),
-          ),
+          ),),
           onPressed: onPressed,
         ),
       ),
