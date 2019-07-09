@@ -40,7 +40,8 @@ class _GameUserInterface extends State<GameUserInterface> {
                     Expanded(
                       flex: 1,
                       child: QuestionButton(
-                        firstText: 'Judgement',
+                        ifBlue: true,
+                        firstText: '45',
                         fontSize: 50.0,
                         color: _color,
                         highlightColor: Color(0xffc10909),
@@ -56,7 +57,8 @@ class _GameUserInterface extends State<GameUserInterface> {
                     Expanded(
                       flex: 1,
                       child: QuestionButton(
-                        firstText: '23',
+                        ifBlue: true,
+                        firstText: '78',
                         fontSize: 50.0,
                         color: _color,
                         highlightColor: Color(0xffc10909),
@@ -80,7 +82,8 @@ class _GameUserInterface extends State<GameUserInterface> {
                     Expanded(
                       flex: 1,
                       child: QuestionButton(
-                        firstText: '23',
+                        ifBlue: true,
+                        firstText: '53',
                         fontSize: 50.0,
                         color: _color,
                         highlightColor: Color(0xffc10909),
@@ -96,7 +99,8 @@ class _GameUserInterface extends State<GameUserInterface> {
                     Expanded(
                       flex: 1,
                       child: QuestionButton(
-                        firstText: '23',
+                        ifBlue: true,
+                        firstText: '29',
                         fontSize: 50.0,
                         color: _color,
                         highlightColor: Color(0xffc10909),

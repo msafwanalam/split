@@ -42,15 +42,30 @@ class QuestionButton extends StatelessWidget {
           highlightColor: highlightColor,
           elevation: 20,
           highlightElevation: 2,
-          child: FittedBox(
-            fit: BoxFit.contain,
-            child: Text(
-            firstText,
-            style: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Nunito-Regular'),
-          ),),
+          child: ifBlue == true
+              ? RotatedBox(
+                  quarterTurns: 2,
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: Text(
+                      firstText,
+                      style: TextStyle(
+                          fontSize: fontSize,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Nunito-Regular'),
+                    ),
+                  ),
+                )
+              : FittedBox(
+                  fit: BoxFit.contain,
+                  child: Text(
+                    firstText,
+                    style: TextStyle(
+                        fontSize: fontSize,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Nunito-Regular'),
+                  ),
+                ),
           onPressed: onPressed,
         ),
       ),
