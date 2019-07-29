@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:split/QuestionButton.dart';
 import 'package:split/GameUserInterface.dart';
 
-
 class PlayAgainMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,8 +17,9 @@ class PlayAgainMenu extends StatelessWidget {
               MaterialPageRoute(builder: (context) => GameUserInterface()),
             );
           },
-          child: Text('Go back!'),
+          child: Text('Play Again!'),
         ),
       ),
     );
+  }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:split/QuestionButton.dart';
 import 'dart:async';
 import 'package:split/PlayAgainMenu.dart';
+import 'package:split/Question.dart';
 
 Color _color = Color(0xffea0707);
 
@@ -16,13 +17,17 @@ class GameUserInterface extends StatefulWidget {
 class _GameUserInterface extends State<GameUserInterface> {
   int _counter = 0;
 
+  //This is where the Question class is initialized
+  Question question = new Question();
+
+  @override
   initState(){
     startTimer();
   }
 
   ///////////////////Timer implemented
   Timer _timer;
-  int _start = 10;
+  int _start = 100;
 
   void startTimer() {
     const oneSec = const Duration(seconds: 1);
@@ -184,7 +189,7 @@ class _GameUserInterface extends State<GameUserInterface> {
                         child: FittedBox(
                           fit: BoxFit.contain,
                           child: Text(
-                            'Player 2 Question',
+                            question.question,
                             style: TextStyle(
                                 fontSize: 40,
                                 fontWeight: FontWeight.bold,
@@ -204,7 +209,7 @@ class _GameUserInterface extends State<GameUserInterface> {
                     Expanded(
                       flex: 1,
                       child: QuestionButton(
-                        firstText: '23',
+                        firstText: question.firstChoice.toString(),
                         fontSize: 50.0,
                         color: _color,
                         highlightColor: Color(0xffc10909),
@@ -220,7 +225,7 @@ class _GameUserInterface extends State<GameUserInterface> {
                     Expanded(
                       flex: 1,
                       child: QuestionButton(
-                        firstText: '23',
+                        firstText: question.secondChoice.toString(),
                         fontSize: 50.0,
                         color: _color,
                         highlightColor: Color(0xffc10909),
@@ -244,7 +249,7 @@ class _GameUserInterface extends State<GameUserInterface> {
                     Expanded(
                       flex: 1,
                       child: QuestionButton(
-                        firstText: '23',
+                        firstText: question.thirdChoice.toString(),
                         fontSize: 50.0,
                         color: _color,
                         highlightColor: Color(0xffc10909),
@@ -260,7 +265,7 @@ class _GameUserInterface extends State<GameUserInterface> {
                     Expanded(
                       flex: 1,
                       child: QuestionButton(
-                        firstText: '23',
+                        firstText: question.fourthChoice.toString(),
                         fontSize: 50.0,
                         color: _color,
                         highlightColor: Color(0xffc10909),
