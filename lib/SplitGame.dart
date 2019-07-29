@@ -1,15 +1,12 @@
 import 'package:split/Player.dart';
 
 class SplitGame{
-  double _timer = 0;
+
   Player _player1 = new Player();
   Player _player2 = new Player();
 
-  SplitGame();//To start the timer and continue that
+  SplitGame();
 
-  double get totalTime{
-    return _timer;
-  }
 
   void increaseScorePlayer1(){
     _player1.increasePoints();

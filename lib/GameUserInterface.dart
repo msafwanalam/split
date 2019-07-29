@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:split/QuestionButton.dart';
 import 'dart:async';
+import 'package:split/PlayAgainMenu.dart';
 
 Color _color = Color(0xffea0707);
 
@@ -31,6 +32,10 @@ class _GameUserInterface extends State<GameUserInterface> {
             () {
           if (_start < 1) {
             timer.cancel();
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PlayAgainMenu()),
+            );
           } else {
             _start = _start - 1;
           }
