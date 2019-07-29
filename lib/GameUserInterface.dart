@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:split/QuestionButton.dart';
+import 'dart:async';
 
 Color _color = Color(0xffea0707);
 
@@ -13,6 +14,38 @@ class GameUserInterface extends StatefulWidget {
 //this is where the game takes place
 class _GameUserInterface extends State<GameUserInterface> {
   int _counter = 0;
+
+  initState(){
+    startTimer();
+  }
+
+  ///////////////////Timer implemented
+  Timer _timer;
+  int _start = 10;
+
+  void startTimer() {
+    const oneSec = const Duration(seconds: 1);
+    _timer = new Timer.periodic(
+      oneSec,
+          (Timer timer) => setState(
+            () {
+          if (_start < 1) {
+            timer.cancel();
+          } else {
+            _start = _start - 1;
+          }
+        },
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
+  //////////////////////////
 
   void _incrementCounter() {
     setState(() {
@@ -118,8 +151,44 @@ class _GameUserInterface extends State<GameUserInterface> {
               ),
               Expanded(
                 flex: 1,
-                child: MaterialButton(
-                  shape: OutlineInputBorder(),
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: MaterialButton(
+                        //shape: OutlineInputBorder(),
+                        child: RotatedBox(
+                          quarterTurns: 2,
+                          child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Text(
+                              'Player 1 Question',
+                              style: TextStyle(
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Nunito-Regular'),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: MaterialButton(
+                        //shape: OutlineInputBorder(),
+                        child: FittedBox(
+                          fit: BoxFit.contain,
+                          child: Text(
+                            'Player 2 Question',
+                            style: TextStyle(
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Nunito-Regular'),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Expanded(
