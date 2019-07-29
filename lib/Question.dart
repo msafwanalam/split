@@ -21,19 +21,22 @@ class Question {
     //generating answer choices
 
     int first = (_answer % 10) + rnd.nextInt(19) * 10;
-    int second = _answer + rnd.nextInt(40);
-    int third = (_answer - rnd.nextInt(25)).abs();
+    int second = _answer + rnd.nextInt(5) +1;
+    int third = (_answer - rnd.nextInt(50) + 1).abs();
     int fourth = _answer;
 
     while (first == _answer || second == _answer || third == _answer) {
+
+      Random NewRNG = new Random();
+
       if (first == _answer) {
-        first = (_answer % 10) + rnd.nextInt(19) * 10;
+        first = (_answer % 10) + NewRNG.nextInt(19) * 10;
       }
       if (second == _answer) {
-        second = _answer + rnd.nextInt(5) +1;
+        second = _answer + NewRNG.nextInt(5) +1;
       }
       if (third == _answer) {
-        (_answer - rnd.nextInt(50) + 1).abs();
+        third = (_answer - NewRNG.nextInt(50) + 1).abs();
       }
     }
 

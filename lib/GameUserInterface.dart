@@ -3,6 +3,8 @@ import 'package:split/QuestionButton.dart';
 import 'dart:async';
 import 'package:split/PlayAgainMenu.dart';
 import 'package:split/Question.dart';
+import 'package:split/SplitGame.dart';
+import 'package:split/Player.dart';
 
 Color _color = Color(0xffea0707);
 
@@ -15,37 +17,40 @@ class GameUserInterface extends StatefulWidget {
 
 //this is where the game takes place
 class _GameUserInterface extends State<GameUserInterface> {
-  int _counter = 0;
-
   //This is where the Question class is initialized
-  Question question = new Question();
+  Question _questionBlue;
+  Question _questionRed;
+  Player _playerBlue;
+  Player _playerRed;
 
   @override
-  initState(){
+  initState() {
+    _questionBlue = new Question();
+    _questionRed = new Question();
     startTimer();
   }
 
   ///////////////////Timer implemented
   Timer _timer;
-  int _start = 100;
+  int _start = 1000;
 
   void startTimer() {
     const oneSec = const Duration(seconds: 1);
     _timer = new Timer.periodic(
       oneSec,
-          (Timer timer) => setState(
+      (Timer timer) => setState(
             () {
-          if (_start < 1) {
-            timer.cancel();
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => PlayAgainMenu()),
-            );
-          } else {
-            _start = _start - 1;
-          }
-        },
-      ),
+              if (_start < 1) {
+                timer.cancel();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PlayAgainMenu()),
+                );
+              } else {
+                _start = _start - 1;
+              }
+            },
+          ),
     );
   }
 
@@ -57,9 +62,9 @@ class _GameUserInterface extends State<GameUserInterface> {
 
   //////////////////////////
 
-  void _incrementCounter() {
+  void _updateGame(int num) {
     setState(() {
-      _counter++;
+      _questionRed = new Question();
     });
   }
 
@@ -90,9 +95,7 @@ class _GameUserInterface extends State<GameUserInterface> {
                         highlightColor: Color(0xffc10909),
                         onPressed: () {
                           setState(() {
-                            _incrementCounter();
-                            if (_counter % 2 == 0) {}
-                            if (_counter % 2 == 1) {}
+                            _updateGame(null);
                           });
                         },
                       ),
@@ -107,9 +110,7 @@ class _GameUserInterface extends State<GameUserInterface> {
                         highlightColor: Color(0xffc10909),
                         onPressed: () {
                           setState(() {
-                            _incrementCounter();
-                            if (_counter % 2 == 0) {}
-                            if (_counter % 2 == 1) {}
+                            _updateGame(null);
                           });
                         },
                       ),
@@ -132,9 +133,7 @@ class _GameUserInterface extends State<GameUserInterface> {
                         highlightColor: Color(0xffc10909),
                         onPressed: () {
                           setState(() {
-                            _incrementCounter();
-                            if (_counter % 2 == 0) {}
-                            if (_counter % 2 == 1) {}
+                            _updateGame(null);
                           });
                         },
                       ),
@@ -149,9 +148,7 @@ class _GameUserInterface extends State<GameUserInterface> {
                         highlightColor: Color(0xffc10909),
                         onPressed: () {
                           setState(() {
-                            _incrementCounter();
-                            if (_counter % 2 == 0) {}
-                            if (_counter % 2 == 1) {}
+                            _updateGame(null);
                           });
                         },
                       ),
@@ -189,7 +186,7 @@ class _GameUserInterface extends State<GameUserInterface> {
                         child: FittedBox(
                           fit: BoxFit.contain,
                           child: Text(
-                            question.question,
+                            _questionRed.question,
                             style: TextStyle(
                                 fontSize: 40,
                                 fontWeight: FontWeight.bold,
@@ -209,32 +206,24 @@ class _GameUserInterface extends State<GameUserInterface> {
                     Expanded(
                       flex: 1,
                       child: QuestionButton(
-                        firstText: question.firstChoice.toString(),
+                        firstText: _questionRed.firstChoice.toString(),
                         fontSize: 50.0,
                         color: _color,
                         highlightColor: Color(0xffc10909),
                         onPressed: () {
-                          setState(() {
-                            _incrementCounter();
-                            if (_counter % 2 == 0) {}
-                            if (_counter % 2 == 1) {}
-                          });
+                          _updateGame(2);
                         },
                       ),
                     ),
                     Expanded(
                       flex: 1,
                       child: QuestionButton(
-                        firstText: question.secondChoice.toString(),
+                        firstText: _questionRed.secondChoice.toString(),
                         fontSize: 50.0,
                         color: _color,
                         highlightColor: Color(0xffc10909),
                         onPressed: () {
-                          setState(() {
-                            _incrementCounter();
-                            if (_counter % 2 == 0) {}
-                            if (_counter % 2 == 1) {}
-                          });
+                          _updateGame(2);
                         },
                       ),
                     ),
@@ -249,32 +238,24 @@ class _GameUserInterface extends State<GameUserInterface> {
                     Expanded(
                       flex: 1,
                       child: QuestionButton(
-                        firstText: question.thirdChoice.toString(),
+                        firstText: _questionRed.thirdChoice.toString(),
                         fontSize: 50.0,
                         color: _color,
                         highlightColor: Color(0xffc10909),
                         onPressed: () {
-                          setState(() {
-                            _incrementCounter();
-                            if (_counter % 2 == 0) {}
-                            if (_counter % 2 == 1) {}
-                          });
+                          _updateGame(2);
                         },
                       ),
                     ),
                     Expanded(
                       flex: 1,
                       child: QuestionButton(
-                        firstText: question.fourthChoice.toString(),
+                        firstText: _questionRed.fourthChoice.toString(),
                         fontSize: 50.0,
                         color: _color,
                         highlightColor: Color(0xffc10909),
                         onPressed: () {
-                          setState(() {
-                            _incrementCounter();
-                            if (_counter % 2 == 0) {}
-                            if (_counter % 2 == 1) {}
-                          });
+                          _updateGame(2);
                         },
                       ),
                     ),
